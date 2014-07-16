@@ -1,24 +1,25 @@
-class Tamil_calendar
-def self.days1 num
+class Days
+def self.convert(number)
+num = number.to_s
    if num == "Monday"
       return "Thingal-kizamai"
-   end
-   if num == "Tuesday"
+  
+   elsif num == "Tuesday"
       return "Sevvaai-kizamai"
-   end
-   if num == "Wednesday"
+   
+   elsif num == "Wednesday"
        return "Budhan-kizamai"
-   end
-   if num == "Thursday"
+   
+   elsif num == "Thursday"
      return "Vyaazha-kizamai"
-  end
-   if num == "Friday"
+  
+   elsif num == "Friday"
       return "velli-kizamai"
-  end
-   if num == "Saturday"
+  
+  elsif num == "Saturday"
       return "sani-kizamai"
-  end
-   if num == "Sunday"
+  
+   elsif num == "Sunday"
      return "Nyaayitru_kizhamai"
 end
 end
