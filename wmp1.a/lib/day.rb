@@ -1,22 +1,23 @@
 require 'sinatra'
-
-require './roman.rb'
-require'./numbers.rb'
-i = Roman.new()
-j = Numbers.new()
+require './roman'
+require './numbers'
+require './spell_digit.rb'
+require './days'
 
 get '/one' do
-day = params['day']
-month = params['month']
-year = params['year']
+month = params['month'].to_i
+day = params['day'].to_i
+year = params['year'].to_i
 one = File.read('./form1.html')
-str = month.to_s + " " + day.to_s + " " + year.to_s 
-s = i.convert(year)
-r = j.convert(day)
-one = one + " " + r.to_s + " " + month.to_s + " " + s.to_s + " "
-
+d = ""
+if day !=0 && month !=0 && year !=0
+p = Time.new( year , month , day)
+d = p.strftime('%A')
+m = p.strftime('%B')
+a = Tamil_calendar.days1(d.to_s)
 end
-
+one = one + m.to_s + "\s" + Numbers.convert(day) + "\s" + year.to_s + "\s" + Roman.convert(year) + "\s" + Spell_digit.convert(year) + d + "\s" + a.to_s
+end
 
 
   
