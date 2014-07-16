@@ -1,0 +1,37 @@
+require 'sinatra'
+<<<<<<< HEAD
+require './roman.rb'
+require'./numbers.rb'
+i = Roman.new()
+j = Numbers.new()
+
+get '/one' do
+day = params['day']
+month = params['month']
+year = params['year']
+one = File.read('./form1.html')
+str = month.to_s + " " + day.to_s + " " + year.to_s 
+s = i.convert(year)
+r = j.convert(day)
+one = one + r.to_s + "\s" + month.to_s + "\s" + s.to_s + "\s" 
+=======
+
+
+
+get '/one' do
+date = params['date']
+month = params['month']
+year = params['year']
+one = File.read('./form1.html')
+
+one = one + ' ' + date.to_s + ' ' + month.to_s + ' ' + year.to_s + ' ' 
+>>>>>>> a0bd81a49e7057805a17869efe1e02de827b7622
+
+#Time.one.strftime('%a')
+
+
+end
+
+  
+
+
