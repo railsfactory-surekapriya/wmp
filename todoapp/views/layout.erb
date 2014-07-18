@@ -1,0 +1,24 @@
+<html>
+<head>
+</head>	
+<body>
+<b>	
+	<a href='/page'> home </a> &nbsp;  
+	<% if session[:username]%>
+	<a href='/member'> member </a> &nbsp; 
+	
+	<a href='/logout'> logout </a>
+	<% else %>
+	<a href='/login'> login </a> &nbsp;
+	<%end %>
+	 &nbsp; <a href='/erb_example'> Todolist </a> <br/> <br/> <br/> <br/>
+	
+	Hi <%=session[:username]%><br/>
+</b>	
+<%=yield %>
+</body>
+</html>
+
+
+
+
