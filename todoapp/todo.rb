@@ -1,19 +1,16 @@
 require 'rubygems'
 require 'bundler/setup'
 require 'sinatra'
-require './todolist.rb'
+require_relative './todolist.rb'
 
 configure do
   set :views, "#{File.dirname(__FILE__)}/views"
 end
 
 enable :sessions
-set :session_secret, 'randomesecretkey112324'
-
+set :session_secret, 'randomsecretkey112324'
 t = Todolist.new("file.txt")
-
-
-#Home Page
+# root page
 get '/page' do 
  @time =  Time.now
 erb :index
@@ -28,14 +25,14 @@ get '/erb_example' do
 end  
 
 
+#adding
 
+get '/add/1' do
+ erb :add
 
-#adding iems
-get '/add/1'do
-erb :add
 end
-
 post '/add/1' do
+
 items = params['items']
 t.add(items)
 t.save
@@ -47,37 +44,28 @@ end
 
 
 #pending
+
 get '/pending' do
+
 @str = []
 @str = t.pending
-t.save
+
 erb :pending
 end
 
 
 
+#mark as done
 
-
-#listing
-get '/list' do
-@str = []
-@str = t.pending
-t.list
-erb :pending
-end
-
-
-
-
-#marking as done
 get '/mark_done' do
 erb :mark_done
-end
 
+end
 post '/mark_done' do
-num = params['items'].to_i
+num = params[:items].to_i
 t.complete(num)
 t.save
+
 erb :mark_done
 end
 
@@ -85,23 +73,33 @@ end
 
 
 #completed
+
 get '/completed' do
 @str1 = []
 @str1 = t.completed
 erb :completed
+end
+post '/completed' do
+num = params[:items]
+t.completed(num)
+t.save
+erb :completed
+
 end
 
 
 
 
 #delete
+
 get '/delete' do
-erb :delete
+ erb :delete
+
 end
 
 post '/delete' do
 num1 = params['delete'].to_i
-t.delete(num1)
+ t.delete(num1)
 t.save
 erb :delete
 end
@@ -116,6 +114,10 @@ end
 
 post '/login' do
 session[:username]= params[:username]
+
+
+
+
 # erb :login
 redirect "/member"
 end
@@ -124,6 +126,7 @@ end
 
 
 #logout page
+
 get '/logout' do
 session.clear
 @message= "you have been logged out"
@@ -140,5 +143,6 @@ get "/member" do
   else
   redirect "/login"
 end
+end
   
-end  
+ 
