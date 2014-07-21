@@ -24,7 +24,7 @@ end
 
 def add(items)
 @todo << items
-@pending << items.to_s + "#undone"
+@pending << items + "#undone"
 @pending
 end
 
