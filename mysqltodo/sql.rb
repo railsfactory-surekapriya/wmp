@@ -21,13 +21,6 @@ get '/show_databases' do
 erb :show_databases
 end   
 
-=begin
-get '/show_database' do  
-my_dbase = params["database"]             
-@tasks = client.query("show databases;")
-erb:show_databases
-end   
-=end
 
 
 get '/show_tables' do
@@ -38,12 +31,12 @@ client2 = Mysql2::Client.new(:host => "localhost", :username => "root", :passwor
 end
  
 
-get '/tables' do
-dbtable = params["table"]
-db = params["database"]
-client3 = Mysql2::Client.new(:host => "localhost", :username => "root", :password => 'root',:database => db )
-@table1 = client3.query("describe #{table};")
-@table2 = client3.query("select * from #{table_name}")
+get '/describetable' do
+db_table = params["table"]
+my_dbase = params["database"]
+client3 = Mysql2::Client.new(:host => "localhost", :username => "root", :password => 'root', :database => my_dbase )
+@table1 = client3.query("describe #{db_table}")
+@table2 = client3.query("select * from #{db_table}")
 erb :describetable
 
 end
