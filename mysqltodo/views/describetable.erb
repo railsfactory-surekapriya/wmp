@@ -1,0 +1,30 @@
+<h1>Describing tables</h1>
+<table border = "1">
+<% @table1.each do |table| %>
+<%@x=table.values %>
+<%@x.each do |i| %>
+
+<td><%=i%></td>
+<%end%>
+</tr>
+<%end%>
+</table>
+<br/>
+<br/><br/>
+
+
+<table border = "1">
+<% @table2.each do |table| %>
+<%@x=table.values %>
+<%@x.each do |i| %>
+
+<td><%=i%></td>
+<%end%>
+</tr>
+<%end%>
+</table>
+
+<a href='/home'>click here to go back to home page</a>
+
+
+

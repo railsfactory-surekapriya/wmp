@@ -1,11 +1,10 @@
 <h1>tables are</h1>
 <ol>
 <% @tables.each do |table| %>
-<li><%=table.values.first%> </li><br/>
-
+<li><%=table.values.first%> 
+<a href='/describetable?database=<%=params["database"]%>&table=<%=table.values.first%>'>description</a> </li>
 <%end%>
 </ol>
-
 <a href='/home'>click here to go back to home page</a>
 
 
