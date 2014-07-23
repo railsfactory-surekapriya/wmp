@@ -41,15 +41,40 @@ client3 = Mysql2::Client.new(:host => "localhost", :username => "root", :passwor
 erb :describetable
 end
 
+get '/createdb' do
+erb :createdb
+end
 
-get '/createdb/:database' do
+post '/createdb' do
+database = params["database"]
+client4 = Mysql2::Client.new(:host => "localhost", :username => "root", :password => 'root' )
+client4.query("create database #{database}")
+redirect '/createdb'
+end
+
+
+get '/deletedb' do
+erb :deletedb
+end
+
+post '/deletedb' do
+database = params["database"]
+client5 = Mysql2::Client.new(:host => "localhost", :username => "root", :password => 'root' )
+client5.query("drop database #{database}")
+redirect '/deletedb'
+end
+
+
+
+=begin
+post '/createdb/:database' do
 @db_name ="#{params[:database]}"
 client4 = Mysql2::Client.new(:host => "localhost", :username => "root", :password => 'root')
 client4.query("create database #{@db_name}")
 "database #{params[:database]} was created"
 #erb :createdb
+=end
 
-end
 
 
 
