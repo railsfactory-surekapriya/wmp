@@ -1,9 +1,9 @@
 <h1>databases are</h1>
-<ol>
+<ol> 
 <%@tasks.each do |database| %>
 
 
-<%=database["Database"] %>
+<%=database["Database"] %> 
 
  <a href='/show_tables?database=<%=database["Database"]%>'>show_tables</a> <br/>
 <% end %>
