@@ -5,6 +5,14 @@
 <a href='/describetable?database=<%=params["database"]%>&table=<%=table.values.first%>'>description</a> </li>
 <%end%>
 </ol>
+
+<% @tables.each do |tab| %>
+<a href="/createdb/:database">create new database</a> | <a href="/insert">insert into table</a> | <a href="/drop">drop table</a> <br/>
+<%end%>
+
+
+<br />
+
 <a href='/home'>click here to go back to home page</a>
 
 
