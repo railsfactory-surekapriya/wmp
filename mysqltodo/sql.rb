@@ -4,7 +4,7 @@ require 'bundler/setup'
 require 'sinatra'
 
 
-client = Mysql2::Client.new(:host => "localhost", :username => "root", :password => 'root') 
+
 configure do
   set :views, "#{File.dirname(__FILE__)}/views"
 end
@@ -16,7 +16,8 @@ get '/home' do
 erb :home
 end
 
-get '/show_databases' do               
+get '/show_databases' do    
+client = Mysql2::Client.new(:host => "localhost", :username => "root", :password => 'root')            
 @tasks = client.query("show databases;")
 erb :show_databases
 end   
@@ -38,7 +39,18 @@ client3 = Mysql2::Client.new(:host => "localhost", :username => "root", :passwor
 @table1 = client3.query("describe #{db_table}")
 @table2 = client3.query("select * from #{db_table}")
 erb :describetable
+end
+
+
+get '/createdb/:database' do
+@db_name ="#{params[:database]}"
+client4 = Mysql2::Client.new(:host => "localhost", :username => "root", :password => 'root')
+client4.query("create database #{@db_name}")
+"database #{params[:database]} was created"
+#erb :createdb
 
 end
+
+
 
 
