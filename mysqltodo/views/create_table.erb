@@ -1,0 +1,23 @@
+<form >
+<br/>
+
+
+
+<ol>
+
+<p>Select database </p>
+<select name="database">
+<option value="selected"> SELECT </option> 
+<% res.each do |tab| %>
+<option value="@database">"tab"</option>
+<% end %>
+</ol>
+</select>
+<br/>
+<br />
+<p>Table <p/>
+
+<input type ='text' name='table' id='table' /><br /> 
+<br />
+<input type = 'submit' value='Submit' />
+</form>
